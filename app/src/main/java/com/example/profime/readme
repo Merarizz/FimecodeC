@@ -13,14 +13,32 @@ faltan------------------
 olvido contraseña estudiante yy maestro, ayuda qué hago kjhsclasikuhd.awsikludh l.kasiu
 
 -----------------------------
-estudiante
+
+---------------------------------
+login
+    si el usuario no tiene cuenta, le da click en registrarse para llenar sus datos(va a perfil). si se registra se manda al qr.
+    al momento de ingresar a la cuenta si no tiene grupo asociado se mandsa al qr.
+    si al ingresar ya tiene grupo va a la pantalla de inicio.
+    si el usuario perdio su contra?????????????????????????????????????????
+-----------------------------------
+Estudiante
+
 barra superior Nombre de estudiante, botón de pantalla anterior, logotipo, nombre uni.
 abarra inferior inicio, mensajes, perfil, estadisticas.
-Pag de inicio
-    listado de lenguajes
-    medallas(estadisticas)
-    mensajes(mensajes)
+---Pag de inicio
+    si el usuario no a hecho el examen no se puede avanzar. Solo desplegar boton para hacer el examen
+    si ya lo hizo se habilita el curso y se manda al mapa si le dan click.
+---------------------------------
+pag.de mapa
+    mapa
+    cada boton contiene un cap. te manda a la pantalla del capitulo.
+pag. capitulo
+    listar los temas de cap.
+    cada link lleva a la pag del tema.
+    medallas(estadisticas) por grupo
+    mensajes(mensajes) por grupo
     sección(secciónes)
+------------------------------------
 
 pagina de secciónes
     listado de secciónes
