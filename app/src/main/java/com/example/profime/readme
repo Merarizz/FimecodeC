@@ -1,0 +1,114 @@
+estructura de la app
+core.datos todos los archivos de BD
+
+core.navegación todos loa archivos de navegación
+
+core.estudiante todos lo que sea de archivos
+
+core.maestro todos lo que sea de maestros
+
+
+faltan------------------
+
+olvido contraseña estudiante yy maestro, ayuda qué hago kjhsclasikuhd.awsikludh l.kasiu
+
+-----------------------------
+estudiante
+barra superior Nombre de estudiante, botón de pantalla anterior, logotipo, nombre uni.
+abarra inferior inicio, mensajes, perfil, estadisticas.
+Pag de inicio
+    listado de lenguajes
+    medallas(estadisticas)
+    mensajes(mensajes)
+    sección(secciónes)
+
+pagina de secciónes
+    listado de secciónes
+    temas(pag.tema)
+
+pag. temas
+    teoría
+    Quizz
+
+temas -----------------------------------
+
+    cap1. fundamentos de programación
+        tema1. procesador
+        RAM
+        registros
+        Cache
+        alu
+        qué es un programa
+        Lenguajes de programación
+    cap2. estructura de programación y codificación
+        tema1. diagramas de flujo
+        simbología de un diagrama de flujo
+        elementos de un programa
+    cap3. principios de programación
+        tema1. tipos de datos
+        sistema binario
+        tablas de verdad
+        operadores aritmeticos
+         operador de asignacion
+         librerias
+         variables locales y globales
+    cap4. programacion estructurada
+        tema1. estructura de control de secuencia
+        estructura de control de decisión if
+        estructura de control de decisión if else
+        estructura de control de decisión if elseif, else
+        estructura de control de decisión switch
+    cap5. Programacion estructurada ciclos
+        estructura de control de interacion for
+        estructura de control de interacion do while
+        estructura de control de interacion while
+    cap6.
+    cap6. programacion modular
+        arreglos unidimensionales
+        arreglos bidimensionales
+        funciones sin retorno
+        funciones con retorno
+        parametros por valor
+        parametros por referencia
+
+        enums
+        cadenas
+        punteros
+        archivos
+    cap7. estructuras de datos lineales
+        structs
+        listas
+        pilas
+        colas
+        tablas de dispersión
+    cap7. estructuras de datos no lineales-arboles
+        árboles
+        tipos de arboles
+        recorrido inorden
+        recorrido preorden
+        recorrido postorden
+        busqueda binaria
+    cap8. estructura de datos no lineales-grafos
+        grafos
+        tipos de grafos
+        representacion de grafos, matris de adyacencia
+        representacion de grafos, lista de adyacencia
+        algoritmo DFS
+        algoritmo BFS
+        algoritmo dijkstra
+        algoritmo kruskal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
