@@ -23,9 +23,9 @@ login
 -----------------------------------
 Estudiante
 
-barra superior Nombre de estudiante, botón de pantalla anterior, logotipo, nombre uni.
-abarra inferior inicio, mensajes, perfil, estadisticas.
----Pag de inicio
+barra superior Nombre de estudiante, logotipo, nombre uni.
+abarra inferior inicio, notis, perfil, estadisticas.
+---Pag de inicio---------------------------
     si el usuario no a hecho el examen no se puede avanzar. Solo desplegar boton para hacer el examen
     si ya lo hizo se habilita el curso y se manda al mapa si le dan click.
 ---------------------------------

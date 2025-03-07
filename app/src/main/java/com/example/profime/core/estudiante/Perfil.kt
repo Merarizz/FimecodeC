@@ -124,9 +124,7 @@ fun Formulario() {
     val habilitado = true
 
 
-    /***********************************************
-    Cajas de texto
-     ***********************************************/
+    /*cajas de texto*/
     Spacer(modifier = Modifier.height(16.dp))
     OutlinedTextField(
         value = user,
