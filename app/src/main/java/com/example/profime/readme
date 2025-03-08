@@ -5,12 +5,13 @@ core.navegación todos loa archivos de navegación
 
 core.estudiante todos lo que sea de archivos
 
-core.maestro todos lo que sea de maestros
+core.maestro todos lo que sea de maestros o sea lo de Salvador <3
 
 
 faltan------------------
 
 olvido contraseña estudiante yy maestro, ayuda qué hago kjhsclasikuhd.awsikludh l.kasiu
+&&&&&que sea el mismo estilo de diseño por las dos partes&&&&&
 
 -----------------------------
 
@@ -23,7 +24,7 @@ login
 -----------------------------------
 Estudiante
 
-barra superior Nombre de estudiante, logotipo, nombre uni.
+barra superior Nombre de estudiante(Merari licea), logotipo, nombre uni.
 abarra inferior inicio, notis, perfil, estadisticas.
 ---Pag de inicio---------------------------
     si el usuario no a hecho el examen no se puede avanzar. Solo desplegar boton para hacer el examen
@@ -40,7 +41,7 @@ pag. capitulo
     sección(secciónes)
 ------------------------------------
 
-pagina de secciónes
+página de secciónes
     listado de secciónes
     temas(pag.tema)
 
@@ -50,71 +51,81 @@ pag. temas
 
 temas -----------------------------------
 
-    cap1. fundamentos de programación
-        tema1. procesador
-        RAM
-        registros
-        Cache
-        alu
-        qué es un programa
-        Lenguajes de programación
-    cap2. estructura de programación y codificación
-        tema1. diagramas de flujo
-        simbología de un diagrama de flujo
-        elementos de un programa
-    cap3. principios de programación
-        tema1. tipos de datos
-        sistema binario
-        tablas de verdad
-        operadores aritmeticos
-         operador de asignacion
-         librerias
-         variables locales y globales
-    cap4. programacion estructurada
-        tema1. estructura de control de secuencia
-        estructura de control de decisión if
-        estructura de control de decisión if else
-        estructura de control de decisión if elseif, else
-        estructura de control de decisión switch
-    cap5. Programacion estructurada ciclos
-        estructura de control de interacion for
-        estructura de control de interacion do while
-        estructura de control de interacion while
-    cap6.
-    cap6. programacion modular
-        arreglos unidimensionales
-        arreglos bidimensionales
-        funciones sin retorno
-        funciones con retorno
-        parametros por valor
-        parametros por referencia
-
-        enums
-        cadenas
-        punteros
-        archivos
-    cap7. estructuras de datos lineales
-        structs
-        listas
-        pilas
-        colas
-        tablas de dispersión
-    cap7. estructuras de datos no lineales-arboles
-        árboles
-        tipos de arboles
-        recorrido inorden
-        recorrido preorden
-        recorrido postorden
-        busqueda binaria
-    cap8. estructura de datos no lineales-grafos
-        grafos
-        tipos de grafos
-        representacion de grafos, matris de adyacencia
-        representacion de grafos, lista de adyacencia
-        algoritmo DFS
-        algoritmo BFS
-        algoritmo dijkstra
-        algoritmo kruskal
+    ####Capítulo 1. Fundamentos de Programación####
+            Tema 1. Procesador
+            RAM
+            Registros
+            Caché
+            ALU
+                Tema 2. Conceptos Básicos
+                ¿Qué es un programa?
+                Lenguajes de programación
+    ####Capítulo 2. Estructura de Programación y Codificación####
+            Tema 1. Diagramas de Flujo
+            Simbología de un diagrama de flujo
+            Elementos de un programa
+    ####Capítulo 3. Principios de Programación####
+            Tema 1. Tipos de Datos y Operaciones
+            Tipos de datos
+            Sistema binario
+            Tablas de verdad
+            Operadores aritméticos
+            Operador de asignación
+                Tema 2. Variables y Librerías
+                Librerías
+                Variables locales y globales
+    ####Capítulo 4. Programación Estructurada####
+            Tema 1. Estructuras de Control de Decisión
+            Estructura de control de secuencia
+            Estructura de control de decisión if
+            Estructura de control de decisión if-else
+            Estructura de control de decisión if-elseif-else
+            Estructura de control de decisión switch
+    ####Capítulo 5. Programación Estructurada - Ciclos####
+            Tema 1. Estructuras de Control de Iteración
+            Estructura de control de iteración for
+            Estructura de control de iteración do-while
+            Estructura de control de iteración while
+    ####Capítulo 6. Programación Modular####
+            Tema 1. Arreglos
+            Arreglos unidimensionales
+            Arreglos bidimensionales
+                Tema 2. Funciones
+                Funciones sin retorno
+                Funciones con retorno
+                Parámetros por valor
+                Parámetros por referencia
+                    Tema 3. Otros Conceptos
+                    Enums
+                    Cadenas
+                    Punteros
+                    Archivos
+    ####Capítulo 8. Estructuras de Datos Lineales####
+            Tema 1. Conceptos de Estructuras de Datos
+            Structs
+            Listas
+            Pilas
+            Colas
+            Tablas de dispersión
+    ####Capítulo 9. Estructuras de Datos No Lineales - Árboles####
+            Tema 1. Árboles y Recorridos
+            Árboles
+            Tipos de árboles
+            Recorrido inorden
+            Recorrido preorden
+            Recorrido postorden
+            Búsqueda binaria
+    ####Capítulo 10. Estructuras de Datos No Lineales - Grafos####
+            Tema 1. Grafos y Representaciones
+            Grafos
+            Tipos de grafos
+            Representación de grafos: matriz de adyacencia
+            Representación de grafos: lista de adyacencia
+                Tema 2. Algoritmos en Grafos
+                Algoritmo DFS
+                Algoritmo BFS
+                Algoritmo Dijkstra
+                Algoritmo Kruskal
 
 
 
