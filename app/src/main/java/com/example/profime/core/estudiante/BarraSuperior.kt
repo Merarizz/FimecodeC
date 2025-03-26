@@ -17,6 +17,7 @@ import com.example.profime.ui.theme.azulclaro
 import com.example.profime.ui.theme.negro
 import com.example.profime.ui.theme.verdebarras
 import com.example.profime.ui.theme.verdemilitar
+import com.example.profime.ui.theme.verdeverde
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,7 +26,7 @@ fun BarraSuperior(){
     TopAppBar(
         title = { Text(text = "Salvador Guzmán") },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = azul,
+            containerColor = verdeverde,
             titleContentColor = negro,
             navigationIconContentColor = negro
         ),

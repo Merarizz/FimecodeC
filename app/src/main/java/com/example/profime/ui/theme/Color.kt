@@ -20,6 +20,8 @@ val verdegris = Color(0xFF8EA185)
 val verdemilitar= Color(0xFF2E5902)
 
 val azul= Color(0xFF46658C)
+val verdeverde= Color(0xFF027333)
+
 
 val blanco = Color(0xFFFFFFFF)
 val negro = Color(0xFF000000)

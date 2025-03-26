@@ -15,11 +15,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.profime.ui.theme.azul
 import com.example.profime.ui.theme.verdehoja
+import com.example.profime.ui.theme.verdeverde
 
 @Composable
 fun BarraInferior() {
     BottomAppBar(
-        containerColor = azul,
+        containerColor = verdeverde,
         modifier = Modifier.height(70.dp)
     ) {
         Row(

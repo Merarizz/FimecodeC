@@ -3,6 +3,7 @@ package com.example.profime.core.estudiante
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -34,6 +35,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -62,22 +64,13 @@ fun ContentMapa(paddingValues: PaddingValues){
             modifier = Modifier
                 .fillMaxSize()
                 .paint(
-                    painter = painterResource(id = R.drawable.fondodelmapa),
+                    painter = painterResource(id = R.drawable.fondomientras),
                     contentScale = ContentScale.Crop
                 )
         ) {
             ToggleImageButton()
+
             /*Button(onClick = { /*TODO*/ },
-                modifier = Modifier.size(60.dp).offset(x=5.dp,y=110.dp).clip(CircleShape),
-                contentPadding = PaddingValues(0.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White,
-                    contentColor = Color.Black    //arreglar colores
-                )
-            ) {
-                Text(text = "1", fontSize = 20.sp)
-            }
-            Button(onClick = { /*TODO*/ },
                 modifier = Modifier.size(60.dp).offset(x=180.dp,y=125.dp).clip(CircleShape),
                 contentPadding = PaddingValues(0.dp)) {
                 Text(text = "2", fontSize = 20.sp)
@@ -151,15 +144,21 @@ fun ContentMapa(paddingValues: PaddingValues){
 }
 @Composable
 fun ToggleImageButton() {
-    var isClicked by remember { mutableStateOf(false) } // Estado para cambiar la imagen
+    var isPressed by remember { mutableStateOf(false) } // Estado para detectar si está presionado
 
     Image(
-        painter = painterResource(id = if (isClicked) R.drawable.unodown else R.drawable.unoup),
+        painter = painterResource(id = if (isPressed) R.drawable.btndownf1 else R.drawable.btnupf1),
         contentDescription = "Botón de imagen",
         modifier = Modifier
             .size(110.dp)
             .offset(y = 90.dp)
-            .clickable { isClicked = !isClicked } // Cambia el estado al hacer clic
-
+            .pointerInput(Unit) {
+                detectTapGestures(
+                    onPress = {isPressed = true  // Cambia la imagen al presionar
+                        tryAwaitRelease() // Espera hasta que se suelte
+                        isPressed = false // Regresa a la imagen original al soltar
+                    }
+                )
+            }
     )
 }
