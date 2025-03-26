@@ -12,22 +12,25 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import com.example.profime.ui.theme.azul
 import com.example.profime.ui.theme.azulclaro
 import com.example.profime.ui.theme.negro
+import com.example.profime.ui.theme.verdebarras
+import com.example.profime.ui.theme.verdemilitar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BarraSuperior(){
     val context = LocalContext.current.applicationContext
     TopAppBar(
-        title = { Text(text = "Merari") },
+        title = { Text(text = "Salvador Guzmán") },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = azulclaro,
+            containerColor = azul,
             titleContentColor = negro,
             navigationIconContentColor = negro
         ),
         navigationIcon = {
-            IconButton(onClick = { Toast.makeText(context, "Presionaste el icono", Toast.LENGTH_SHORT).show()}) {
+            IconButton(onClick = { Toast.makeText(context, "Presionaste el menú", Toast.LENGTH_SHORT).show()}) {
                 Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
             }
         }

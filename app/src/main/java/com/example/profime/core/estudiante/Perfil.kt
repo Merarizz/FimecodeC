@@ -241,4 +241,8 @@ fun Formulario() {
             style = MaterialTheme.typography.labelLarge
         )
     }
+    Text(
+        text = "Aceptar",
+        style = MaterialTheme.typography.labelLarge
+    )
 }

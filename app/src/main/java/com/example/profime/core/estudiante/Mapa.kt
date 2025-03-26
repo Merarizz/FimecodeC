@@ -2,6 +2,7 @@ package com.example.profime.core.estudiante
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,6 +24,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -57,11 +62,12 @@ fun ContentMapa(paddingValues: PaddingValues){
             modifier = Modifier
                 .fillMaxSize()
                 .paint(
-                    painter = painterResource(id = R.drawable.fondomapa),
+                    painter = painterResource(id = R.drawable.fondodelmapa),
                     contentScale = ContentScale.Crop
                 )
         ) {
-            Button(onClick = { /*TODO*/ },
+            ToggleImageButton()
+            /*Button(onClick = { /*TODO*/ },
                 modifier = Modifier.size(60.dp).offset(x=5.dp,y=110.dp).clip(CircleShape),
                 contentPadding = PaddingValues(0.dp),
                 colors = ButtonDefaults.buttonColors(
@@ -126,7 +132,7 @@ fun ContentMapa(paddingValues: PaddingValues){
                 )
             ) {
                 Text(text = "META", fontSize = 20.sp)
-            }
+            }*/
 
 
 
@@ -142,4 +148,18 @@ fun ContentMapa(paddingValues: PaddingValues){
             }*/
         }
     }
+}
+@Composable
+fun ToggleImageButton() {
+    var isClicked by remember { mutableStateOf(false) } // Estado para cambiar la imagen
+
+    Image(
+        painter = painterResource(id = if (isClicked) R.drawable.unodown else R.drawable.unoup),
+        contentDescription = "Botón de imagen",
+        modifier = Modifier
+            .size(110.dp)
+            .offset(y = 90.dp)
+            .clickable { isClicked = !isClicked } // Cambia el estado al hacer clic
+
+    )
 }

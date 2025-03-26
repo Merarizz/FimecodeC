@@ -11,10 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.profime.core.estudiante.BarraSuperior
+import com.example.profime.core.estudiante.Estadisticas
 import com.example.profime.core.estudiante.Inicio
 import com.example.profime.core.estudiante.Mapa
 import com.example.profime.core.estudiante.Notificaciones
 import com.example.profime.core.estudiante.Perfil
+//import com.example.profime.core.estudiante.Qr
 import com.example.profime.ui.theme.ProfimeTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,6 +33,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App(){
     ProfimeTheme {
-            Mapa()
+        Mapa()
     }
 }
