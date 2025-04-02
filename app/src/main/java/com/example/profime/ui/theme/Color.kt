@@ -21,6 +21,9 @@ val verdemilitar= Color(0xFF2E5902)
 
 val azul= Color(0xFF46658C)
 val verdeverde= Color(0xFF027333)
+val verdelindo= Color(0xFFBFB78F)
+
+val beige= Color(0xFFF5F5DC)
 
 
 val blanco = Color(0xFFFFFFFF)

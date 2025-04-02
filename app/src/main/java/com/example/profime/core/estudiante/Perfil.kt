@@ -97,7 +97,7 @@ fun ContentPerfil(paddingValues: PaddingValues){
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .padding(top = 5.dp),
-                                    painter = painterResource(id = R.drawable.fondouanl),
+                                    painter = painterResource(id = R.drawable.logofime),
                                     contentDescription = "Logotipo de FIME"
                                 )
                                 Spacer(modifier = Modifier.height(16.dp))
@@ -241,8 +241,4 @@ fun Formulario() {
             style = MaterialTheme.typography.labelLarge
         )
     }
-    Text(
-        text = "Aceptar",
-        style = MaterialTheme.typography.labelLarge
-    )
 }

@@ -24,7 +24,7 @@ import com.example.profime.ui.theme.verdeverde
 fun BarraSuperior(){
     val context = LocalContext.current.applicationContext
     TopAppBar(
-        title = { Text(text = "Salvador Guzmán") },
+        title = { Text(text = "Merari Licea") },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = verdeverde,
             titleContentColor = negro,

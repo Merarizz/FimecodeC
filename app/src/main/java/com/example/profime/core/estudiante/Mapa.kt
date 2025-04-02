@@ -64,7 +64,7 @@ fun ContentMapa(paddingValues: PaddingValues){
             modifier = Modifier
                 .fillMaxSize()
                 .paint(
-                    painter = painterResource(id = R.drawable.fondomientras),
+                    painter = painterResource(id = R.drawable.wallpaperblanco),
                     contentScale = ContentScale.Crop
                 )
         ) {
@@ -142,6 +142,7 @@ fun ContentMapa(paddingValues: PaddingValues){
         }
     }
 }
+/*como  mandar un parametro un r.drawable.variable*/
 @Composable
 fun ToggleImageButton() {
     var isPressed by remember { mutableStateOf(false) } // Estado para detectar si está presionado

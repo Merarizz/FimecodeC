@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    //alias(libs.plugins.jetbrainsKotlinSerialization)
 }
 
 android {
@@ -55,6 +56,7 @@ dependencies {
     implementation(libs.androidx.camera.view)
     implementation(libs.play.services.mlkit.barcode.scanning)*/
     testImplementation(libs.junit)
+    implementation(libs.kotlinx.serialization.json)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -62,4 +64,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.material.icons.extended)
+    implementation("androidx.compose.ui:ui:1.7.8")
+    implementation("androidx.compose.ui:ui-tooling:1.7.8")
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("androidx.navigation:navigation-compose:2.7.5")
+    implementation ("androidx.compose.material3:material3:1.2.0")
+
 }
