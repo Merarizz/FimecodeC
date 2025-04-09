@@ -27,6 +27,7 @@ import com.example.profime.core.estudiante.Inicio
 import com.example.profime.core.estudiante.Mapa
 import com.example.profime.core.estudiante.Notificaciones
 import com.example.profime.core.estudiante.Perfil
+import com.example.profime.core.navigation.NavegacionEst
 //import com.example.profime.core.estudiante.Qr
 import com.example.profime.ui.theme.ProfimeTheme
 import com.journeyapps.barcodescanner.ScanContract
@@ -45,7 +46,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App(){
     ProfimeTheme {
-       Notificaciones()
+       NavegacionEst()
     }
 }
 @Composable

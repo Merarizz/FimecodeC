@@ -37,6 +37,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.profime.core.data.ValidaUsuario
 import com.example.profime.ui.theme.blanco
 import com.example.profime.ui.theme.botonverde
 import com.example.profime.ui.theme.grisinactivo
@@ -45,7 +47,7 @@ import com.example.profime.ui.theme.verdefime
 
 
 @Composable
-fun InicioSesion() {
+fun InicioSesion(navController: NavController) {
     MaterialTheme {
         Box(
             modifier = Modifier
@@ -82,7 +84,7 @@ fun InicioSesion() {
 
                             Spacer(modifier = Modifier.height(16.dp))
 
-                            UsuarioSesion()
+                            UsuarioSesion(navController)
                         }
                     }
                 }
@@ -94,13 +96,15 @@ fun InicioSesion() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UsuarioSesion() {
+fun UsuarioSesion(navController: NavController) {
     var user by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var selectedIndex by remember { mutableStateOf(0) }
     val items = listOf("Estudiantes", "Profesores")
     val habilitado = true
+    var clickboton by remember { mutableStateOf(false) }
+
 
     /*botones alumno y  maestro*/
 
@@ -174,7 +178,7 @@ fun UsuarioSesion() {
     )
 
     Button(
-        onClick = { },
+        onClick = { clickboton = true },
         colors = ButtonDefaults.buttonColors(
             containerColor = botonverde,
             contentColor = blanco
@@ -190,7 +194,12 @@ fun UsuarioSesion() {
             style = MaterialTheme.typography.labelLarge
         )
     }
+    if (clickboton) {
+        ValidaUsuario(navController, items[selectedIndex], user, password)
+        clickboton = false
+    }
 }
+
 
 
 

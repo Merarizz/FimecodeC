@@ -14,7 +14,7 @@ fun NavGraph(navController: NavHostController) {
         composable("crearGrupo") { CreacionGrupo(navController) }
         composable("crearCurso") { CrearCursoScreen(navController) }
         composable("crearExamen") { CrearExamenConNavController(navController) }
-        composable("notificaciones") { Notificaciones()}
+        composable("notificaciones") { Notificaciones(navController)}
         composable("estadisticas") { Estadisticas(navController) }
         composable("perfil") { MaestroProfile(navController) }
         composable("preguntaScreen/{tema}") { backStackEntry ->

@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 fun CrearExamenConNavController(navController: NavController) { // Recibe el NavController
     Scaffold(
         topBar = { BarraSuperior() },
-        bottomBar = { BarraInferior() }
+        bottomBar = { BarraInferior(navController) }
     ) { paddingValues ->
         CrearExamen(navController, paddingValues) // Ahora pasamos navController
     }

@@ -21,7 +21,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 fun CreacionGrupo(navController: NavController) { // Recibe el NavController
     Scaffold(
         topBar = { BarraSuperior() },
-        bottomBar = { BarraInferior() }
+        bottomBar = { BarraInferior(navController) }
     ) { paddingValues ->
         ContentCreacionGrupo(paddingValues) // ✅ Ahora sí llama al contenido correcto
     }}

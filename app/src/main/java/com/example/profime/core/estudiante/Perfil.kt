@@ -45,6 +45,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.profime.R
 import com.example.profime.UsuarioSesion
 import com.example.profime.core.common.BarraProgreso
@@ -55,17 +56,17 @@ import com.example.profime.ui.theme.negro
 import com.example.profime.ui.theme.verdefime
 
 @Composable
-fun Perfil(){
+fun Perfil(navController: NavController){
     Scaffold(
         topBar = { BarraSuperior()},
-        bottomBar = { BarraInferior()},
-        content= {paddingValues -> ContentPerfil(paddingValues)}
+        bottomBar = { BarraInferior(navController)},
+        content= {paddingValues -> ContentPerfil(navController, paddingValues)}
 
     )
 }
 
 @Composable
-fun ContentPerfil(paddingValues: PaddingValues){
+fun ContentPerfil(navController: NavController, paddingValues: PaddingValues){
     MaterialTheme {
         Box(
             modifier = Modifier

@@ -25,13 +25,14 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.profime.R
 
 @Composable
-fun Notificaciones(){
+fun Notificaciones(navController: NavController){
     Scaffold(
         topBar = { BarraSuperior()},
-        bottomBar = { BarraInferior()},
+        bottomBar = { BarraInferior(navController)},
         content= {paddingValues -> ContentNotificaciones(paddingValues)}
 
     )

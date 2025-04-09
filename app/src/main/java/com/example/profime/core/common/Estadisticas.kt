@@ -27,7 +27,7 @@ import com.example.profime.R
 fun Estadisticas(navController: NavController) {
     Scaffold(
         topBar = { BarraSuperior() },
-        bottomBar = { BarraInferior() }
+        bottomBar = { BarraInferior(navController) }
     ) { paddingValues ->
         Column(
             modifier = Modifier

@@ -32,7 +32,7 @@ import com.example.profime.R
 fun AdministradorMaestroScreen(navController: NavController) {
     Scaffold(
         topBar = { BarraSuperior() },
-        bottomBar = { BarraInferior() }
+        bottomBar = { BarraInferior(navController) }
     ) { paddingValues ->
         ContentAdministradorMaestro(navController, paddingValues)
     }

@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 fun CrearCursoConNavController(navController: NavController) {
     Scaffold(
         topBar = { BarraSuperior() },
-        bottomBar = { BarraInferior() }
+        bottomBar = { BarraInferior(navController) }
     ) { paddingValues ->
         CrearCurso(navController, paddingValues) // ✅ Ahora está en el orden correcto
     }

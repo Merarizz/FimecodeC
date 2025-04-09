@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.profime.InicioSesion
 import com.example.profime.core.estudiante.Estadisticas
 import com.example.profime.core.estudiante.Inicio
+import com.example.profime.core.estudiante.Mapa
 import com.example.profime.core.estudiante.Notificaciones
 import com.example.profime.core.estudiante.Perfil
 
@@ -15,19 +16,22 @@ fun NavegacionEst(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screens.Login.route){
         composable(Screens.Login.route){
-            InicioSesion()
+            InicioSesion(navController)
         }
         composable(Screens.InicioEstudiante.route) {
-            Inicio()
+            Inicio(navController)
         }
         composable(Screens.Notificaciones.route){
-            Notificaciones()
+            Notificaciones(navController)
         }
         composable(Screens.Perfil.route) {
-            Perfil()
+            Perfil(navController)
         }
         composable(Screens.Estadisticas.route){
             Estadisticas(navController)
+        }
+        composable(Screens.Mapa.route){
+            Mapa(navController)
         }
     }
 }

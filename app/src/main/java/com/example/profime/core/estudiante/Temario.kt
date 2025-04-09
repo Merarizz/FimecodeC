@@ -20,21 +20,22 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.profime.R
 import com.example.profime.core.common.BarraProgreso
 
 @Composable
-fun Temario(){
+fun Temario(navController: NavController){
     Scaffold(
         topBar = { BarraSuperior()},
-        bottomBar = { BarraInferior()},
-        content= {paddingValues -> ContentTemario(paddingValues)}
+        bottomBar = { BarraInferior(navController)},
+        content= {paddingValues -> ContentTemario(navController, paddingValues)}
 
     )
 }
 
 @Composable
-fun ContentTemario(paddingValues: PaddingValues){
+fun ContentTemario(navController: NavController, paddingValues: PaddingValues){
     MaterialTheme {
         Box(
             modifier = Modifier

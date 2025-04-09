@@ -39,8 +39,10 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.profime.R
 import com.example.profime.ui.theme.blanco
 import com.example.profime.ui.theme.botonverde
@@ -48,17 +50,17 @@ import com.example.profime.ui.theme.negro
 import com.example.profime.ui.theme.verdefime
 
 @Composable
-fun Mapa(){
+fun Mapa(navController: NavController){
     Scaffold(
         topBar = { BarraSuperior()},
-        bottomBar = { BarraInferior()},
-        content= {paddingValues -> ContentMapa(paddingValues) }
+        bottomBar = { BarraInferior(navController)},
+        content= {paddingValues -> ContentMapa(navController, paddingValues) }
 
     )
 }
 
 @Composable
-fun ContentMapa(paddingValues: PaddingValues){
+fun ContentMapa(navController: NavController, paddingValues: PaddingValues){
     MaterialTheme {
         Box(
             modifier = Modifier
@@ -68,7 +70,16 @@ fun ContentMapa(paddingValues: PaddingValues){
                     contentScale = ContentScale.Crop
                 )
         ) {
-            ToggleImageButton()
+            ToggleImageButton(0.dp, 90.dp, R.drawable.btnupf1, R.drawable.btndownf1, R.drawable.btnupt1)
+            ToggleImageButton(180.dp, 125.dp, R.drawable.btnupf2, R.drawable.btndownf2, R.drawable.btnupt2)
+            ToggleImageButton(317.dp, 217.dp, R.drawable.btnupf3, R.drawable.btndownf3, R.drawable.btnupt3)
+           //ToggleImageButton(191.dp, 348.dp, R.drawable.btnupf4, R.drawable.btndownf4, R.drawable.btnupt4)
+            ToggleImageButton(9.dp, 355.dp, R.drawable.btnupf5, R.drawable.btndownf5, R.drawable.btnupt5)
+            ToggleImageButton(159.dp, 468.dp, R.drawable.btnupf6, R.drawable.btndownf6, R.drawable.btnupt6)
+            //ToggleImageButton(336.dp, 441.dp, R.drawable.btnupf7, R.drawable.btndownf7, R.drawable.btnupt7)
+            ToggleImageButton(320.dp, 608.dp, R.drawable.btnupf8, R.drawable.btndownf8, R.drawable.btnupt8)
+            ToggleImageButton(125.dp, 610.dp, R.drawable.btnupf9, R.drawable.btndownf9, R.drawable.btnupt9)
+            //ToggleImageButton(10.dp, 710.dp, R.drawable.btnupf1, R.drawable.btndownf10, R.drawable.btnupt10)
 
             /*Button(onClick = { /*TODO*/ },
                 modifier = Modifier.size(60.dp).offset(x=180.dp,y=125.dp).clip(CircleShape),
@@ -144,15 +155,15 @@ fun ContentMapa(paddingValues: PaddingValues){
 }
 /*como  mandar un parametro un r.drawable.variable*/
 @Composable
-fun ToggleImageButton() {
+fun ToggleImageButton(xoffset: Dp, yoffset: Dp, iconup: Int,icondown: Int, iconhecho: Int) {
     var isPressed by remember { mutableStateOf(false) } // Estado para detectar si está presionado
 
     Image(
-        painter = painterResource(id = if (isPressed) R.drawable.btndownf1 else R.drawable.btnupf1),
+        painter = painterResource(id = if (isPressed) icondown else iconup),
         contentDescription = "Botón de imagen",
         modifier = Modifier
             .size(110.dp)
-            .offset(y = 90.dp)
+            .offset(x = xoffset, y = yoffset)
             .pointerInput(Unit) {
                 detectTapGestures(
                     onPress = {isPressed = true  // Cambia la imagen al presionar

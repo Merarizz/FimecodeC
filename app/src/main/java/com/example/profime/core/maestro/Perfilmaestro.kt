@@ -26,7 +26,7 @@ import com.example.profime.R
 fun MaestroProfile(navController: NavController) {
     Scaffold(
         topBar = { BarraSuperior() }, // Barra superior
-        bottomBar = { BarraInferior() }, // Barra inferior
+        bottomBar = { BarraInferior(navController) }, // Barra inferior
         content = { paddingValues ->
             ContentMaestroProfile(navController, paddingValues)
         }
