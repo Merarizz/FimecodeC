@@ -69,6 +69,5 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.2.0")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("androidx.navigation:navigation-compose:2.7.5")
-    implementation ("androidx.compose.material3:material3:1.2.0")
-
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }

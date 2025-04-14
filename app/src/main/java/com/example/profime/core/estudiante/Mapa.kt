@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.profime.R
+import com.example.profime.core.data.ValidaCapitulo
 import com.example.profime.ui.theme.blanco
 import com.example.profime.ui.theme.botonverde
 import com.example.profime.ui.theme.negro
@@ -70,16 +71,16 @@ fun ContentMapa(navController: NavController, paddingValues: PaddingValues){
                     contentScale = ContentScale.Crop
                 )
         ) {
-            ToggleImageButton(0.dp, 90.dp, R.drawable.btnupf1, R.drawable.btndownf1, R.drawable.btnupt1)
-            ToggleImageButton(180.dp, 125.dp, R.drawable.btnupf2, R.drawable.btndownf2, R.drawable.btnupt2)
-            ToggleImageButton(317.dp, 217.dp, R.drawable.btnupf3, R.drawable.btndownf3, R.drawable.btnupt3)
-           //ToggleImageButton(191.dp, 348.dp, R.drawable.btnupf4, R.drawable.btndownf4, R.drawable.btnupt4)
-            ToggleImageButton(9.dp, 355.dp, R.drawable.btnupf5, R.drawable.btndownf5, R.drawable.btnupt5)
-            ToggleImageButton(159.dp, 468.dp, R.drawable.btnupf6, R.drawable.btndownf6, R.drawable.btnupt6)
-            //ToggleImageButton(336.dp, 441.dp, R.drawable.btnupf7, R.drawable.btndownf7, R.drawable.btnupt7)
-            ToggleImageButton(320.dp, 608.dp, R.drawable.btnupf8, R.drawable.btndownf8, R.drawable.btnupt8)
-            ToggleImageButton(125.dp, 610.dp, R.drawable.btnupf9, R.drawable.btndownf9, R.drawable.btnupt9)
-            //ToggleImageButton(10.dp, 710.dp, R.drawable.btnupf1, R.drawable.btndownf10, R.drawable.btnupt10)
+            ToggleImageButton(navController, 1, 0.dp, 90.dp, R.drawable.btnupf1, R.drawable.btndownf1, R.drawable.btnupt1)
+            ToggleImageButton(navController, 2, 180.dp, 125.dp, R.drawable.btnupf2, R.drawable.btndownf2, R.drawable.btnupt2)
+            ToggleImageButton(navController, 3, 317.dp, 217.dp, R.drawable.btnupf3, R.drawable.btndownf3, R.drawable.btnupt3)
+            ToggleImageButton(navController, 4, 191.dp, 348.dp, R.drawable.btnupf4, R.drawable.btndownf4, R.drawable.btnupt4)
+            ToggleImageButton(navController, 5, 9.dp, 355.dp, R.drawable.btnupf5, R.drawable.btndownf5, R.drawable.btnupt5)
+            ToggleImageButton(navController, 6, 159.dp, 468.dp, R.drawable.btnupf6, R.drawable.btndownf6, R.drawable.btnupt6)
+            ToggleImageButton(navController, 7, 320.dp, 441.dp, R.drawable.btnupf7, R.drawable.btndownf7, R.drawable.btnupt7)
+            ToggleImageButton(navController, 8, 320.dp, 608.dp, R.drawable.btnupf8, R.drawable.btndownf8, R.drawable.btnupt8)
+            ToggleImageButton(navController, 9, 125.dp, 610.dp, R.drawable.btnupf9, R.drawable.btndownf9, R.drawable.btnupt9)
+            ToggleImageButton(navController, 10, 10.dp, 710.dp, R.drawable.btnupf10, R.drawable.btndownf10, R.drawable.btnupt10)
 
             /*Button(onClick = { /*TODO*/ },
                 modifier = Modifier.size(60.dp).offset(x=180.dp,y=125.dp).clip(CircleShape),
@@ -138,8 +139,6 @@ fun ContentMapa(navController: NavController, paddingValues: PaddingValues){
                 Text(text = "META", fontSize = 20.sp)
             }*/
 
-
-
             /*
             LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -153,11 +152,11 @@ fun ContentMapa(navController: NavController, paddingValues: PaddingValues){
         }
     }
 }
-/*como  mandar un parametro un r.drawable.variable*/
-@Composable
-fun ToggleImageButton(xoffset: Dp, yoffset: Dp, iconup: Int,icondown: Int, iconhecho: Int) {
-    var isPressed by remember { mutableStateOf(false) } // Estado para detectar si está presionado
 
+@Composable
+fun ToggleImageButton(navController: NavController,capitulo: Int,xoffset: Dp, yoffset: Dp, iconup: Int,icondown: Int, iconhecho: Int) {
+    var isPressed by remember { mutableStateOf(false) } // Estado para detectar si está presionado
+    var clickboton by remember { mutableStateOf(false) }
     Image(
         painter = painterResource(id = if (isPressed) icondown else iconup),
         contentDescription = "Botón de imagen",
@@ -169,8 +168,13 @@ fun ToggleImageButton(xoffset: Dp, yoffset: Dp, iconup: Int,icondown: Int, iconh
                     onPress = {isPressed = true  // Cambia la imagen al presionar
                         tryAwaitRelease() // Espera hasta que se suelte
                         isPressed = false // Regresa a la imagen original al soltar
+                        clickboton = true
                     }
                 )
             }
     )
+    if (clickboton){
+        ValidaCapitulo(navController, capitulo)
+        clickboton = false
+    }
 }

@@ -11,6 +11,6 @@ fun ValidaUsuario(navController: NavController, tipoUsuario: String, usuario: St
         navController.navigate(Screens.InicioEstudiante.route)
     }
     else {
-        Mensaje("No es estudiante")
+        navController.navigate(Screens.Maestro.route)
     }
 }
