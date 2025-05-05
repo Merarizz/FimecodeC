@@ -17,6 +17,7 @@ navigationCompose = "2.8.9"
 cameraLifecycleVersion = "1.4.2"
 cameraViewVersion = "1.4.2"
 visionCommon = "17.3.0"
+datastoreCoreAndroid = "1.1.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,6 +44,7 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycleVersion" }
 camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraViewVersion" }
 vision-common = { group = "com.google.mlkit", name = "vision-common", version.ref = "visionCommon" }
+androidx-datastore-core-android = { group = "androidx.datastore", name = "datastore-core-android", version.ref = "datastoreCoreAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

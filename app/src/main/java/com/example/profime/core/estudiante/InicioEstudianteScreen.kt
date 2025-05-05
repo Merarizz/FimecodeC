@@ -16,17 +16,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-
+import com.example.profime.core.data.*
 // 📌 Modelo de datos
 data class Curso(val nombre: String, val progreso: Float)
 data class Examen(val titulo: String, val fecha: String)
-data class Estudiante(
-    val nombre: String,
-    val numero: String,
-    val grupo: String,
-    val correo: String,
-    val fotoPerfil: Int // Agregamos la propiedad fotoPerfil
-)
+
 
 @Composable
 fun InicioEstudianteScreen(navController: NavController, estudiante: Estudiante) {

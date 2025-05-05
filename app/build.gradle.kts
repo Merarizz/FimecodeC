@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.camera.view)
     implementation(libs.vision.common)
     implementation(libs.play.services.mlkit.barcode.scanning)
+    implementation(libs.androidx.datastore.core.android)
     /*implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
     implementation(libs.play.services.mlkit.barcode.scanning)*/
@@ -80,5 +81,6 @@ dependencies {
     implementation ("androidx.camera:camera-lifecycle:1.3.0")
     implementation ("androidx.camera:camera-view:1.3.0")
     implementation ("com.google.mlkit:barcode-scanning:17.2.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }
 
