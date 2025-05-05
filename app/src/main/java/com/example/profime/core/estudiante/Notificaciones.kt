@@ -1,6 +1,7 @@
 package com.example.profime.core.estudiante
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.CardDefaults
@@ -29,81 +31,62 @@ import androidx.navigation.NavController
 import com.example.profime.R
 
 @Composable
-fun Notificaciones(navController: NavController){
+fun Notificaciones(navController: NavController) {
     Scaffold(
-        topBar = { BarraSuperior()},
-        bottomBar = { BarraInferior(navController)},
-        content= {paddingValues -> ContentNotificaciones(paddingValues)}
-
+        topBar = { BarraSuperior() },
+        bottomBar = { BarraInferior(navController) },
+        content = { paddingValues -> ContentNotificaciones(paddingValues) }
     )
-
 }
 
 @Composable
 fun ContentNotificaciones(paddingValues: PaddingValues) {
-    MaterialTheme {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .paint(
-                    painter = painterResource(id = R.drawable.fondoapp),
-                    contentScale = ContentScale.Crop
-                )
-        ) {
-            LazyColumn(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxSize()
-                    .padding(top = 100.dp)
-            ) {
-                item {
-                    Notificacion("Tienes una tarea pendiente", 16)
-                    }
-                item {
-                    Notificacion("Tienes una tarea pendiente", 16)
-                }
-                item {
-                    Notificacion("Tienes una tarea pendiente", 16)
-                }
-            }
-        }
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+            .padding(horizontal = 16.dp, vertical = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        item { Notificacion("📌", "Tarea pendiente", "Revisa tus cursos antes del viernes.") }
+        item { Notificacion("📅", "Recordatorio", "Tema del curso de Programación esta por cerrarse") }
+        item { Notificacion("📝", "Proyecto", "Has tenido buen resumen de tus cursos") }
     }
 }
 
 @Composable
-fun Notificacion(Texto: String, ptop:Int){
+fun Notificacion(emoji: String, titulo: String, descripcion: String) {
     ElevatedCard(
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-        modifier = Modifier
-            .size(width = 380.dp, height = 150.dp)
-            .padding(top = ptop.dp)
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.fillMaxWidth()
     ) {
-        LazyRow(
+        Row(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-            //horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.Top
         ) {
-            item {
-                Image(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 5.dp, start = 10.dp),
-                    painter = painterResource(id = R.drawable.portadacpp),
-                    contentDescription = "Logotipo de FIME"
+            Text(
+                text = emoji,
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.padding(end = 12.dp)
+            )
+            Column {
+                Text(
+                    text = titulo,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.primary
                 )
-                Spacer(modifier = Modifier.height(16.dp))
-            }
-            item {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = Texto,
-                        modifier = Modifier.padding(start = 16.dp)
-                    )
-                }
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = descripcion,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         }
     }

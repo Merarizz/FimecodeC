@@ -12,7 +12,11 @@ material = "1.12.0"
 cameraLifecycle = "1.4.1"
 cameraView = "1.4.1"
 playServicesMlkitBarcodeScanning = "18.3.1"
-kotlinserialization = "1.6.3"
+navigationRuntimeAndroid = "2.9.0-alpha08"
+navigationCompose = "2.8.9"
+cameraLifecycleVersion = "1.4.2"
+cameraViewVersion = "1.4.2"
+visionCommon = "17.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,7 +38,12 @@ material-icons-extended = { group = "androidx.compose.material", name = "materia
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
 play-services-mlkit-barcode-scanning = { group = "com.google.android.gms", name = "play-services-mlkit-barcode-scanning", version.ref = "playServicesMlkitBarcodeScanning" }
-kotlinx-serialization-json={module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref="kotlinserialization"}
+androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroid" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycleVersion" }
+camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraViewVersion" }
+vision-common = { group = "com.google.mlkit", name = "vision-common", version.ref = "visionCommon" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

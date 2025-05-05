@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    //alias(libs.plugins.jetbrainsKotlinSerialization)
 }
 
 android {
@@ -52,11 +51,16 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.material)
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.view)
+    implementation(libs.vision.common)
+    implementation(libs.play.services.mlkit.barcode.scanning)
     /*implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
     implementation(libs.play.services.mlkit.barcode.scanning)*/
     testImplementation(libs.junit)
-    implementation(libs.kotlinx.serialization.json)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -69,5 +73,12 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.2.0")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("androidx.navigation:navigation-compose:2.7.5")
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation ("androidx.compose.material3:material3:1.2.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("androidx.camera:camera-camera2:1.3.0")
+    implementation ("androidx.camera:camera-lifecycle:1.3.0")
+    implementation ("androidx.camera:camera-view:1.3.0")
+    implementation ("com.google.mlkit:barcode-scanning:17.2.0")
 }
+

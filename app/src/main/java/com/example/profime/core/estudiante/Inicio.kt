@@ -1,7 +1,6 @@
 package com.example.profime.core.estudiante
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,20 +25,20 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.profime.R
 import com.example.profime.core.common.BarraProgreso
-import com.example.profime.core.navigation.Screens
 
 @Composable
 fun Inicio(navController: NavController){
     Scaffold(
-        topBar = { BarraSuperior()},
-        bottomBar = { BarraInferior(navController)},
-        content= {paddingValues -> Content(navController, paddingValues)}
+        topBar = { BarraSuperior() },
+        bottomBar = { BarraInferior(navController) } // ✅ Ahora sí le pasamos el navController
+    ) { paddingValues ->
+        ContentAdministradorMaestro(navController, paddingValues)
+    }}
 
-    )
-}
+
 
 @Composable
-fun Content(navController: NavController, paddingValues: PaddingValues){
+fun Content(paddingValues: PaddingValues){
     MaterialTheme {
         Box(
             modifier = Modifier
@@ -59,7 +58,6 @@ fun Content(navController: NavController, paddingValues: PaddingValues){
                         modifier = Modifier
                             .size(width = 380.dp, height = 350.dp)
                             .padding(top = 150.dp)
-                            .clickable { navController.navigate(Screens.Mapa.route) }
                     ) {
                         Column(
                         modifier = Modifier

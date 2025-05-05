@@ -21,7 +21,6 @@ login
     al momento de ingresar a la cuenta si no tiene grupo asociado se mandsa al qr.
     si al ingresar ya tiene grupo va a la pantalla de inicio.
     si el usuario perdio su contra?????????????????????????????????????????
-    admin(sp maestro)
 -----------------------------------
 Estudiante
 
@@ -138,7 +137,412 @@ temas -----------------------------------
 
 
 
+package com.example.profime.core.estudiante
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.Book
+import androidx.compose.material.icons.filled.Group
+import androidx.compose.material.icons.filled.ListAlt
+import androidx.compose.material3.*
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.profime.R
+
+@Composable
+fun AdministradorMaestroScreen(navController: NavController) {
+    Scaffold(
+        topBar = { BarraSuperior() },
+        bottomBar = { BarraInferior() }
+    ) { paddingValues ->
+        ContentAdministradorMaestro(paddingValues = paddingValues) // Pasa paddingValues correctamente aquí
+    }
+}
+
+@Composable
+fun ContentAdministradorMaestro(paddingValues: PaddingValues) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+            .padding(16.dp)
+    ) {
+        // Imagen de perfil y nombre del usuario
+        PerfilUsuario()
+
+        // Menú con pestañas modernas
+        TabsAdministrador()
+    }
+}
+
+@Composable
+fun PerfilUsuario() {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        // Imagen de perfil
+        Image(
+            painter = painterResource(id = R.drawable.osomaestro),
+            contentDescription = "Foto de perfil",
+            modifier = Modifier
+                .size(100.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.primary)
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // Nombre y rol
+        Text("Juan Pérez", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        Text("Mestro Administrador", fontSize = 14.sp, color = Color.Gray)
+        Spacer(modifier = Modifier.height(16.dp))
+    }
+}
+
+@Composable
+fun TabsAdministrador() {
+    var selectedTab by remember { mutableStateOf(0) }
+    val tabs = listOf("Grupos", "Cursos", "Estadísticas", "Exámenes")
+    val icons = listOf(
+        Icons.Default.Group,
+        Icons.Default.Book,
+        Icons.Default.BarChart,
+        Icons.Default.ListAlt
+    )
+
+    Column {
+        // Botones de navegación estilo Material 3
+        ScrollableTabRow(
+            selectedTabIndex = selectedTab,
+            edgePadding = 0.dp,
+            indicator = { tabPositions ->
+                TabRowDefaults.Indicator(
+                    Modifier
+                        .tabIndicatorOffset(tabPositions[selectedTab])
+                        .background(MaterialTheme.colorScheme.primary)
+                )
+            }
+        ) {
+            tabs.forEachIndexed { index, title ->
+                Tab(
+                    selected = selectedTab == index,
+                    onClick = { selectedTab = index },
+                    text = { Text(title) },
+                    icon = { Icon(imageVector = icons[index], contentDescription = title) }
+                )
+            }
+        }
+
+        // Contenido dinámico según la pestaña seleccionada
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            when (selectedTab) {
+                0 -> ContentGrupos()
+                1 -> ContentCursos()
+                2 -> ContentEstadisticas(
+                    paddingValues = TODO()
+                )
+                3 -> ContentExamenes()
+            }
+        }
+    }
+}
+
+@Composable
+fun ContentGrupos() {
+    // Lista de grupos simulada
+    val grupos = listOf("Grupo A", "Grupo B", "Grupo C", "Grupo D")
+    var showDialog by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Grupos Disponibles",
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        grupos.forEach { grupo ->
+            SeccionGrupo(grupo)
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón para crear nuevo grupo
+        Button(onClick = { showDialog = true }) {
+            Text("Crear nuevo grupo")
+        }
+
+        // Aquí puedes agregar un Dialog o un formulario para crear el grupo
+        if (showDialog) {
+            // Aquí iría un cuadro de diálogo para agregar un grupo
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                title = { Text("Nuevo Grupo") },
+                text = {
+                    Text("Aquí puedes agregar el formulario para crear un nuevo grupo.")
+                },
+                confirmButton = {
+                    Button(onClick = { showDialog = false }) {
+                        Text("Aceptar")
+                    }
+                },
+                dismissButton = {
+                    Button(onClick = { showDialog = false }) {
+                        Text("Cancelar")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Composable
+fun SeccionGrupo(grupo: String) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable { /* Aquí iría la acción de abrir más detalles del grupo */ },
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Default.Group,
+                contentDescription = grupo,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(40.dp)
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            Text(
+                text = grupo,
+                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
+            )
+        }
+    }
+}
+
+@Composable
+fun ContentCursos() {
+    // Lista de cursos simulada
+    val cursos = listOf(
+        "Curso de Kotlin para Android",
+        "Introducción a la Programación en Java",
+        "Desarrollo Web con Spring Boot",
+        "Fundamentos de la Inteligencia Artificial"
+    )
+    var showDialog by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier.fillMaxWidth().padding(16.dp)
+    ) {
+        Text(
+            text = "Cursos Disponibles",
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        cursos.forEach { curso ->
+            SeccionCurso(curso)
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón para crear nuevo curso
+        Button(onClick = { showDialog = true }) {
+            Text("Crear nuevo curso")
+        }
+
+        // Aquí puedes agregar un Dialog o un formulario para crear el curso
+        if (showDialog) {
+            // Aquí iría un cuadro de diálogo para agregar un curso
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                title = { Text("Nuevo Curso") },
+                text = {
+                    Text("Aquí puedes agregar el formulario para crear un nuevo curso.")
+                },
+                confirmButton = {
+                    Button(onClick = { showDialog = false }) {
+                        Text("Aceptar")
+                    }
+                },
+                dismissButton = {
+                    Button(onClick = { showDialog = false }) {
+                        Text("Cancelar")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Composable
+fun SeccionCurso(curso: String) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable { /* Aquí iría la acción de abrir más detalles del curso */ },
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Default.Book,
+                contentDescription = curso,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(40.dp)
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            Text(
+                text = curso,
+                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
+            )
+        }
+    }
+}
+
+@Composable
+fun ContentEstadisticas() {
+    // Datos de estadísticas simulados
+    val totalEstudiantes = 50
+    val estudiantesAprobados = 40
+    val estudiantesReprobados = 10
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Estadísticas del Curso",
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        Text("Total de estudiantes: $totalEstudiantes")
+        Text("Estudiantes aprobados: $estudiantesAprobados")
+        Text("Estudiantes reprobados: $estudiantesReprobados")
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Aquí podrías agregar un gráfico, pero para este ejemplo solo mostramos texto.
+        Text("Aquí podría ir un gráfico de barras de rendimiento", color = Color.Gray)
+    }
+}
+
+@Composable
+fun ContentExamenes() {
+    // Lista de exámenes simulada
+    val examenes = listOf("Examen de Kotlin", "Examen de Java", "Examen de Spring Boot", "Examen de IA")
+    var showDialog by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Exámenes Disponibles",
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        examenes.forEach { examen ->
+            SeccionExamen(examen)
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Botón para crear nuevo examen
+        Button(onClick = { showDialog = true }) {
+            Text("Crear nuevo examen")
+        }
+
+        // Aquí puedes agregar un Dialog o un formulario para crear el examen
+        if (showDialog) {
+            // Aquí iría un cuadro de diálogo para agregar un examen
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                title = { Text("Nuevo Examen") },
+                text = {
+                    Text("Aquí puedes agregar el formulario para crear un nuevo examen.")
+                },
+                confirmButton = {
+                    Button(onClick = { showDialog = false }) {
+                        Text("Aceptar")
+                    }
+                },
+                dismissButton = {
+                    Button(onClick = { showDialog = false }) {
+                        Text("Cancelar")
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Composable
+fun SeccionExamen(examen: String) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable { /* Aquí iría la acción de abrir más detalles del examen */ },
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Default.ListAlt,
+                contentDescription = examen,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(40.dp)
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            Text(
+                text = examen,
+                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
+            )
+        }
+    }
+}
 
 
 

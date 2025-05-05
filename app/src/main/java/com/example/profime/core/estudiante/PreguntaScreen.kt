@@ -16,7 +16,10 @@ import androidx.navigation.NavController
 @Composable
 fun PreguntaScreen(navController: NavController, tema: String) {
     var preguntaIndex by remember { mutableStateOf(0) }
-    val listaPreguntas = obtenerPreguntasPorTema(tema) // ✅ Ahora sí está definida
+    val listaPreguntas = obtenerPreguntasPorTema(tema)
+
+    // **Depuración: Verificar si hay preguntas cargadas**
+    println("Preguntas cargadas: ${listaPreguntas.size}")
 
     Column(
         modifier = Modifier
@@ -41,17 +44,24 @@ fun PreguntaScreen(navController: NavController, tema: String) {
         )
         Spacer(modifier = Modifier.height(16.dp))
 
-        if (preguntaIndex >= listaPreguntas.size) {
+        if (listaPreguntas.isNotEmpty() && preguntaIndex < listaPreguntas.size) {
+            PreguntaItem(
+                pregunta = listaPreguntas[preguntaIndex],
+                onAnswerCorrect = {
+                    if (preguntaIndex < listaPreguntas.size - 1) {
+                        preguntaIndex += 1
+                        println("Siguiente pregunta: $preguntaIndex") // Debug
+                    } else {
+                        println("Fin del cuestionario") // Debug
+                    }
+                }
+            )
+        } else {
             // **Mensaje de finalización**
             Text(
                 text = "🎉 ¡Has respondido todas las preguntas correctamente!",
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = Color(0xFF1E88E5)
-            )
-        } else {
-            PreguntaItem(
-                pregunta = listaPreguntas[preguntaIndex],
-                onAnswerCorrect = { preguntaIndex += 1 }
             )
         }
     }

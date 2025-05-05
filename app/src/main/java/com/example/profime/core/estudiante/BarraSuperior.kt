@@ -11,22 +11,22 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import com.example.profime.ui.theme.azul
 import com.example.profime.ui.theme.azulclaro
 import com.example.profime.ui.theme.negro
 import com.example.profime.ui.theme.verdebarras
 import com.example.profime.ui.theme.verdemilitar
-import com.example.profime.ui.theme.verdeverde
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BarraSuperior(){
     val context = LocalContext.current.applicationContext
     TopAppBar(
-        title = { Text(text = "Merari Licea") },
+        title = { Text(text = "Salvador Guzmán") },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = verdeverde,
+            containerColor =  Color(0xFF1E88E5),
             titleContentColor = negro,
             navigationIconContentColor = negro
         ),
@@ -37,3 +37,5 @@ fun BarraSuperior(){
         }
     )
 }
+
+

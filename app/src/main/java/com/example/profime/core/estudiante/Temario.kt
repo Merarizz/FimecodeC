@@ -27,15 +27,14 @@ import com.example.profime.core.common.BarraProgreso
 @Composable
 fun Temario(navController: NavController){
     Scaffold(
-        topBar = { BarraSuperior()},
-        bottomBar = { BarraInferior(navController)},
-        content= {paddingValues -> ContentTemario(navController, paddingValues)}
-
-    )
-}
+        topBar = { BarraSuperior() },
+        bottomBar = { BarraInferior(navController) } // ✅ Ahora sí le pasamos el navController
+    ) { paddingValues ->
+        ContentAdministradorMaestro(navController, paddingValues)
+    }}
 
 @Composable
-fun ContentTemario(navController: NavController, paddingValues: PaddingValues){
+fun ContentTemario(paddingValues: PaddingValues){
     MaterialTheme {
         Box(
             modifier = Modifier
