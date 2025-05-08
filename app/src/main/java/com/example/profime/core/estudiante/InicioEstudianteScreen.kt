@@ -53,21 +53,12 @@ fun ContentInicioEstudianteScreen(navController: NavController, estudiante: Estu
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-            // Imagen del estudiante
-            Image(
-                painter = painterResource(id = estudiante.fotoPerfil), // Asumimos que se pasa la imagen desde la fuente de datos
-                contentDescription = "Foto de perfil",
-                modifier = Modifier
-                    .size(100.dp)
-                    .clip(CircleShape)
-                    .background(Color.Gray)
-                    .padding(8.dp)
-            )
+
             Spacer(modifier = Modifier.height(16.dp))
             Text("Bienvenido, ${estudiante.nombre} 👋", style = MaterialTheme.typography.headlineSmall)
         }
 
-        item { CardInfo("Grupo", estudiante.grupo) }
+        item { CardInfo("Grupo", estudiante.id_grupo.toString()) }
         item {
             Button(
                 onClick = { navController.navigate("qrScanner") },
@@ -101,7 +92,7 @@ fun ContentInicioEstudianteScreen(navController: NavController, estudiante: Estu
         items(examenes) { examen -> CardExamen(examen) }
 
         item { Text("👤 Tu información", style = MaterialTheme.typography.titleMedium) }
-        item { CardInfo("Número de estudiante", estudiante.numero) }
+        item { CardInfo("Número de estudiante", estudiante.id_estudiante.toString()) }
         item { CardInfo("Correo", estudiante.correo) }
 
     }

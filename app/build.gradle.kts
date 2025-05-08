@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -82,5 +83,10 @@ dependencies {
     implementation ("androidx.camera:camera-view:1.3.0")
     implementation ("com.google.mlkit:barcode-scanning:17.2.0")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation(platform(libs.supabase.bom))
+    implementation(libs.realtime.kt)
+    implementation(libs.postgrest.kt)
+    implementation(libs.ktor.client.android)
+    implementation(libs.kotlinx.serialization.json)
 }
 

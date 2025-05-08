@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.profime.R
+import com.example.profime.core.data.Estudiante
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -12,8 +13,8 @@ fun NavGraph(navController: NavHostController) {
         composable("login") { Login(navController) }
 
         composable("home") {
-            val estudiante = Estudiante("Salvador Guzman", "10897", "Grupo 4203", "juan.perez@fime.com", R.drawable.logo_estudiante)
-            InicioEstudianteScreen(navController, estudiante)
+            //val estudiante = Estudiante("Salvador Guzman", "10897", "Grupo 4203", "juan.perez@fime.com", R.drawable.logo_estudiante)
+            //InicioEstudianteScreen(navController, estudiante)
         }
 
         composable("qrScanner") {

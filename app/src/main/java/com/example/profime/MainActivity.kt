@@ -8,6 +8,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.example.profime.core.data.*
 import com.example.profime.core.estudiante.NavGraph
 import com.example.profime.ui.theme.ProfimeTheme
 
@@ -20,6 +21,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 // Pasar el NavController a NavGraph
                 NavGraph(navController = navController)
+                //prueba1()
             }
         }
     }

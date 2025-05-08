@@ -192,6 +192,7 @@ fun Login(navController: NavController) {
             Button(
                 onClick = {
                     if (selectedRole == "Estudiante") {
+                        //funcion en databaseinterface
                         navController.navigate("home")
                     } else {
                         navController.navigate("Maestro")
