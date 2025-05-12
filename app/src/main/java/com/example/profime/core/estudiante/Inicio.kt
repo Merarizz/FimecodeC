@@ -45,7 +45,7 @@ fun Content(paddingValues: PaddingValues){
                 .fillMaxSize()
                 .paint(
                     painter = painterResource(id = R.drawable.fondoapp),
-                    contentScale = ContentScale.Crop // Evita que el fondo seestire
+                    contentScale = ContentScale.Crop // Evita que el fondo se estire
                 )
         ) {
             LazyColumn(

@@ -28,6 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.profime.R
+import com.example.profime.core.common.Mensaje
+import com.example.profime.core.data.ValidaLoginEstudiante
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,13 +39,12 @@ fun Login(navController: NavController) {
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var selectedRole by remember { mutableStateOf("Estudiante") }
+    var iniciosesion by remember { mutableStateOf(false) }
+
+    val scope = rememberCoroutineScope()
 
     val roles = listOf("Estudiante", "Maestro")
 
-    // Logo inicial antes de seleccionar el rol
-    val initialLogo = R.drawable.uanllogo  // Asegúrate de tener un logo inicial para esta fase
-
-    // Definir imágenes según el rol
     val roleImage = if (selectedRole == "Estudiante") R.drawable.logo_estudiante else R.drawable.maestro_logo
 
     Box(
@@ -57,56 +59,26 @@ fun Login(navController: NavController) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Mostrar el logo inicial antes de seleccionar el rol
-            AnimatedContent(targetState = selectedRole) { state ->
-                if (state == "Estudiante" || state == "Maestro") {
-                    Image(
-                        painter = painterResource(id = roleImage),
-                        contentDescription = "Imagen de rol",
-                        modifier = Modifier
-                            .size(150.dp)
-                            .clip(CircleShape)
-                            .background(Color.White.copy(alpha = 0.3f))
-                            .padding(16.dp)
-                            .shadow(10.dp, shape = CircleShape), // Sombra para dar más profundidad
-                        contentScale = ContentScale.Crop
-                    )
-                } else {
-                    // Muestra el logo inicial cuando no se ha seleccionado un rol
-                    Image(
-                        painter = painterResource(id = initialLogo),
-                        contentDescription = "Logo inicial",
-                        modifier = Modifier
-                            .size(150.dp)
-                            .clip(CircleShape)
-                            .background(Color.White.copy(alpha = 0.3f))
-                            .padding(16.dp)
-                            .shadow(10.dp, shape = CircleShape), // Sombra para dar más profundidad
-                        contentScale = ContentScale.Crop
-                    )
-                }
-            }
+            Image(
+                painter = painterResource(id = roleImage),
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .size(150.dp)
+                    .clip(CircleShape)
+                    .background(Color.White.copy(alpha = 0.3f))
+                    .padding(16.dp)
+                    .shadow(10.dp, shape = CircleShape),
+                contentScale = ContentScale.Crop
+            )
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Text(
-                text = "Bienvenido",
-                color = Color.White,
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold
-            )
-
+            Text("Bienvenido", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 24.sp)
             Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "Inicia sesión para continuar",
-                fontSize = 16.sp,
-                color = Color.White.copy(alpha = 0.8f)
-            )
+            Text("Inicia sesión para continuar", color = Color.White.copy(alpha = 0.8f))
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            // INPUT DE USUARIO
             OutlinedTextField(
                 value = user,
                 onValueChange = { user = it },
@@ -124,12 +96,11 @@ fun Login(navController: NavController) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // INPUT DE CONTRASEÑA
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
                 label = { Text("Contraseña") },
-                leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Contraseña") },
+                leadingIcon = { Icon(Icons.Default.Lock, contentDescription = "Contraseña") },
                 trailingIcon = {
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
                         Icon(
@@ -151,19 +122,14 @@ fun Login(navController: NavController) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // OPCIÓN OLVIDAR CONTRASEÑA
-            Text(
-                text = "¿Olvidaste tu contraseña?",
-                color = Color.White.copy(alpha = 0.9f),
+            Text("¿Olvidaste tu contraseña?", color = Color.White.copy(alpha = 0.9f),
                 modifier = Modifier
                     .align(Alignment.End)
-                    .clickable { /* Implementar recuperación de contraseña */ }
-                    .padding(8.dp)
-            )
+                    .clickable { /* recuperación */ }
+                    .padding(8.dp))
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // SELECCIÓN DE ROL
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
@@ -180,23 +146,18 @@ fun Login(navController: NavController) {
                             .padding(horizontal = 4.dp)
                             .weight(1f)
                     ) {
-                        Text(text = role, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                        Text(role, fontSize = 16.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // BOTÓN DE INICIAR SESIÓN
-            //creardatastore
             Button(
                 onClick = {
-                    if (selectedRole == "Estudiante") {
-                        //funcion en databaseinterface
-                        navController.navigate("home")
-                    } else {
-                        navController.navigate("Maestro")
-                    }
+                    iniciosesion = true
+                    //scope.launch {
+                    //}
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -209,14 +170,20 @@ fun Login(navController: NavController) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // PRIMERA VEZ AQUÍ
-            Text(
-                text = "¿Primera vez aquí? Regístrate",
-                color = Color.White.copy(alpha = 0.9f),
+            Text("¿Primera vez aquí? Regístrate", color = Color.White.copy(alpha = 0.9f),
                 modifier = Modifier.clickable {
                     navController.navigate("registro")
+                })
+
+            if (iniciosesion) {
+                if (selectedRole == "Estudiante") {
+                    if(ValidaLoginEstudiante(user, password))
+                        navController.navigate("home")
+                } else {
+                    navController.navigate("Maestro")
                 }
-            )
+                iniciosesion = false
+            }
         }
     }
 }

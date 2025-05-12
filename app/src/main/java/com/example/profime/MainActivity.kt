@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.profime.core.data.*
 import com.example.profime.core.estudiante.NavGraph
 import com.example.profime.ui.theme.ProfimeTheme
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +21,9 @@ class MainActivity : ComponentActivity() {
                 // Crear el NavController
                 val navController = rememberNavController()
                 // Pasar el NavController a NavGraph
-                NavGraph(navController = navController)
-                //prueba1()
+               NavGraph(navController = navController)
+                //ValidaLoginEstudiante()
+
             }
         }
     }
